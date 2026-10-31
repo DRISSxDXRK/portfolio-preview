@@ -151,7 +151,7 @@ h1 span { color: var(--accent); text-shadow: 0 0 28px rgba(139, 124, 199, .45); 
 @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 /* ---------- Sections ---------- */
-main section { padding: 5rem 5vw; max-width: 1240px; margin: 0 auto; }
+main section { padding: 5rem 5vw; max-width: 1240px; margin: 0 auto; scroll-margin-top: 90px; }
 .sec-kicker {
   font-family: ui-monospace, 'SF Mono', Menlo, monospace;
   font-size: .8rem; letter-spacing: .18em; text-transform: uppercase;
