@@ -127,6 +127,36 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  /* Mobile menu */
+  var menuBtn = document.getElementById('menuBtn');
+  var menuPanel = document.getElementById('menuPanel');
+  if (menuBtn && menuPanel) {
+    function setMenu(open) {
+      nav.classList.toggle('menu-open', open);
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      if (open) {
+        var first = menuPanel.querySelector('a');
+        if (first) first.focus();
+      }
+    }
+    menuBtn.addEventListener('click', function () {
+      setMenu(!nav.classList.contains('menu-open'));
+    });
+    menuPanel.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setMenu(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && nav.classList.contains('menu-open')) {
+        setMenu(false);
+        menuBtn.focus();
+      }
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 720 && nav.classList.contains('menu-open')) setMenu(false);
+    });
+  }
+
   /* Hero entrance + section reveals: motion with a purpose only.
      No bounce, no elastic easing anywhere. */
   if (hasGsap) {

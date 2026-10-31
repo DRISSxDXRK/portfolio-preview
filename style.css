@@ -86,6 +86,36 @@ button { font: inherit; cursor: pointer; }
 }
 .nav-links a:hover { color: var(--pale); }
 
+/* ---------- Mobile menu ---------- */
+.menu-btn {
+  display: none;
+  width: 44px; height: 44px;
+  flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+  background: transparent; border: none; padding: 0;
+}
+.menu-btn span {
+  display: block; width: 22px; height: 2px;
+  background: var(--text); border-radius: 2px;
+  transition: transform .25s ease, opacity .25s ease;
+}
+.nav.menu-open .menu-btn span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.nav.menu-open .menu-btn span:nth-child(2) { opacity: 0; }
+.nav.menu-open .menu-btn span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+.nav-panel {
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  padding: .5rem 5vw 1rem;
+  display: flex; flex-direction: column;
+  visibility: hidden; opacity: 0; transform: translateY(-8px);
+  transition: opacity .25s ease, transform .25s ease, visibility .25s;
+}
+.nav.menu-open .nav-panel { visibility: visible; opacity: 1; transform: none; }
+.nav-panel a {
+  padding: .9rem 0; font-size: 1.05rem; font-weight: 600;
+}
+.nav-panel a + a { border-top: 1px solid var(--line); }
+
 /* ---------- Hero: bento ---------- */
 .hero { padding: 8.5rem 5vw 3rem; }
 .hero-bento {
@@ -312,6 +342,7 @@ footer { text-align: center; padding: 2.5rem 5vw 3rem; color: var(--muted); font
 }
 @media (max-width: 720px) {
   .nav-links { display: none; }
+  .menu-btn { display: flex; }
   .hero { padding-top: 7rem; }
   .hb-stat { grid-column: span 6; }
   .hb-stat:nth-child(5) { grid-column: span 12; }
