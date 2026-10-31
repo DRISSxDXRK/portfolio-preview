@@ -29,8 +29,10 @@
     var media = document.createElement('div');
     media.className = 'tile-media';
 
-    var play = document.createElement('div');
+    var play = document.createElement('button');
+    play.type = 'button';
     play.className = 'play';
+    play.setAttribute('aria-label', 'Play ' + v.title);
 
     if (v.youtube) {
       var img = document.createElement('img');
