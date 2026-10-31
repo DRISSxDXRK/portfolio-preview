@@ -314,7 +314,7 @@ footer { text-align: center; padding: 2.5rem 5vw 3rem; color: var(--muted); font
   .nav-links { display: none; }
   .hero { padding-top: 7rem; }
   .hb-stat { grid-column: span 6; }
-  .hb-stat:nth-child(4) { grid-column: span 12; }
+  .hb-stat:nth-child(5) { grid-column: span 12; }
   main section { padding: 3.5rem 5vw; }
   .contact-label { min-width: 90px; }
   .contact-value { font-size: .95rem; }
