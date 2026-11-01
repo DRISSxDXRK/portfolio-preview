@@ -3,28 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Driss Ouazzani Chahdi — Video Editor</title>
+<title>Driss Ouazzani Chahdi, Video Editor</title>
 <meta name="description" content="Portfolio of Driss Ouazzani Chahdi, freelance video editor. Reels, YouTube edits, real estate media.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Driss Ouazzani Chahdi — Video Editor">
+<meta property="og:title" content="Driss Ouazzani Chahdi, Video Editor">
 <meta property="og:description" content="Edits that keep viewers watching. 2,300+ videos delivered, 48-hour turnaround.">
-<meta property="og:url" content="https://drissxdxrk.github.io/portfolio-preview/">
+<meta property="og:url" content="https://drizoeditz.pro/">
 <meta property="og:image" content="https://raw.githubusercontent.com/DRISSxDXRK/portfolio/main/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Driss Ouazzani Chahdi — Video Editor">
+<meta name="twitter:title" content="Driss Ouazzani Chahdi, Video Editor">
 <meta name="twitter:description" content="Edits that keep viewers watching. 2,300+ videos delivered, 48-hour turnaround.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/DRISSxDXRK/portfolio/main/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav class="nav" id="nav">
-  <a href="#top" class="wordmark">DRISS<span>.</span></a>
+  <a href="#top" class="wordmark">Driss<span>.</span></a>
   <div class="nav-links">
     <a href="#work">Work</a>
     <a href="#services">Services</a>
@@ -44,23 +44,36 @@
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero-bento">
-    <div class="hb-title">
-      <p class="hero-kicker">Portfolio — Video Editor</p>
-      <h1>Edits that keep <span>viewers watching.</span></h1>
-      <p class="hero-sub">I'm Driss, a freelance video editor from Fès, Morocco. Reels, YouTube and real estate media — cut with pacing your audience can feel.</p>
-      <div class="hero-cta">
+  <canvas id="shader" aria-hidden="true"></canvas>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="hero-kicker reveal">Video Editor Portfolio</p>
+      <h1 class="reveal">Edits that keep <em>viewers watching.</em></h1>
+      <p class="hero-sub reveal">I'm Driss, a freelance video editor from Fès, Morocco. Reels, YouTube and real estate media, cut with pacing your audience can feel.</p>
+      <div class="hero-cta reveal">
         <a href="#work" class="btn btn-primary">Watch my work</a>
         <a href="#services" class="btn btn-ghost">Pricing</a>
       </div>
     </div>
-    <div class="hb-photo">
+    <figure class="hero-figure reveal">
       <img src="https://raw.githubusercontent.com/DRISSxDXRK/portfolio/main/profile.jpg" alt="Driss Ouazzani Chahdi">
-    </div>
-    <div class="hb-stat"><strong>2,300+</strong><span>videos delivered</span></div>
-    <div class="hb-stat"><strong>48h</strong><span>turnaround</span></div>
-    <div class="hb-stat"><strong>8+ years</strong><span>years editing</span></div>
+      <figcaption>Driss Ouazzani Chahdi, video editor</figcaption>
+    </figure>
   </div>
+  <dl class="ledger-strip reveal">
+    <div>
+      <dt>Availability</dt>
+      <dd>Currently available for freelance projects</dd>
+    </div>
+    <div>
+      <dt>Based</dt>
+      <dd>Fès, Morocco, working worldwide</dd>
+    </div>
+    <div>
+      <dt>Toolkit</dt>
+      <dd>After Effects, CapCut</dd>
+    </div>
+  </dl>
 </header>
 
 <div class="ticker" aria-label="Career highlights">
@@ -68,128 +81,107 @@
 </div>
 
 <main>
-  <section id="work" class="work">
-    <div class="sec-head">
-      <p class="sec-kicker"><span>01</span>Selected Work</p>
-      <h2 class="sec-title">Work that <span>holds attention.</span></h2>
-    </div>
+  <section id="work" class="work reveal">
+    <p class="sec-kicker"><span>01</span>Selected Work</p>
+    <h2 class="sec-title">Work that <em>holds attention.</em></h2>
     <div class="filters" id="filters">
-      <button class="filter active" data-filter="all">All</button>
-      <button class="filter" data-filter="ahp">Art Home Photo</button>
-      <button class="filter" data-filter="as">Art Social</button>
-      <button class="filter" data-filter="charlie">Charlie's Pokécards</button>
-      <button class="filter" data-filter="hercules">Hercules Training</button>
+      <button class="filter active" type="button" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter" type="button" data-filter="ahp" aria-pressed="false">Art Home Photo</button>
+      <button class="filter" type="button" data-filter="as" aria-pressed="false">Art Social</button>
+      <button class="filter" type="button" data-filter="charlie" aria-pressed="false">Charlie's Pokécards</button>
+      <button class="filter" type="button" data-filter="hercules" aria-pressed="false">Hercules Training</button>
     </div>
-    <div class="grid" id="grid"></div>
+    <div class="ledger" id="ledger"></div>
+    <noscript><p class="noscript-note">This work list needs JavaScript to load the videos.</p></noscript>
   </section>
 
-  <section id="services" class="services">
-    <div class="services-inner">
-      <p class="sec-kicker"><span>02</span>Services</p>
-      <h2 class="sec-title">Pick a format. <span>I handle the rest.</span></h2>
-      <p class="services-sub">Broadcast-level pacing, platform-native formatting, and a turnaround your content calendar can rely on.</p>
-      <div class="pricing-grid">
-        <div class="price-card featured">
-          <p class="price-badge">Most popular</p>
-          <p class="price-tier">Short-Form</p>
-          <h3>Reels &amp; Shorts</h3>
-          <p class="price"><span class="price-from">from</span> $10<span class="price-per">/reel</span></p>
-          <p class="price-desc">Scroll-stopping vertical cuts engineered to win the first 3 seconds.</p>
-          <ul class="price-features">
-            <li>Hook-first pacing &amp; kinetic captions</li>
-            <li>Trend-aware sound design</li>
-            <li>Platform-native 9:16 formatting</li>
-            <li>48-hour turnaround</li>
-          </ul>
-          <a href="#contact" class="btn btn-primary price-cta">Start a project</a>
-        </div>
-        <div class="price-card">
-          <p class="price-tier">Long-Form</p>
-          <h3>YouTube Edits</h3>
-          <p class="price"><span class="price-from">from</span> $12<span class="price-per">/min</span></p>
-          <p class="price-desc">Retention-edited videos built to hold attention to the end card.</p>
-          <ul class="price-features">
-            <li>Retention pacing &amp; pattern interrupts</li>
-            <li>B-roll, motion graphics &amp; sound design</li>
-            <li>Chapters &amp; end-screen strategy</li>
-            <li>First draft in 48 hours</li>
-          </ul>
-          <a href="#contact" class="btn btn-ghost price-cta">Start a project</a>
-        </div>
-        <div class="price-card">
-          <p class="price-tier">Ongoing</p>
-          <h3>Content Partner</h3>
-          <p class="price">Custom</p>
-          <p class="price-desc">A dedicated editor embedded in your content operation.</p>
-          <ul class="price-features">
-            <li>Guaranteed weekly output slots</li>
-            <li>Priority turnaround</li>
-            <li>One feedback loop, zero chaos</li>
-            <li>Monthly content system</li>
-          </ul>
-          <a href="#contact" class="btn btn-ghost price-cta">Let's talk</a>
-        </div>
-      </div>
-      <p class="services-note">Still deciding? <a href="#contact">Start with a paid trial edit</a> — judge the work, not the pitch.</p>
-    </div>
+  <section id="services" class="services reveal">
+    <p class="sec-kicker"><span>02</span>Services</p>
+    <h2 class="sec-title">Pick a format. <em>I handle the rest.</em></h2>
+    <p class="services-sub">Broadcast-level pacing, platform-native formatting, and a turnaround your content calendar can rely on.</p>
+    <table class="price-table">
+      <thead>
+        <tr><th scope="col">Format</th><th scope="col">Price</th><th scope="col">What you get</th><th scope="col"><span class="visually-hidden">Action</span></th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td data-label="Format"><p class="price-tier">Short-Form</p><h3>Reels &amp; Shorts</h3><p class="price-note">Most popular</p></td>
+          <td data-label="Price"><p class="price"><span class="price-from">from</span> $10<span class="price-per">/reel</span></p><p class="price-desc">Scroll-stopping vertical cuts engineered to win the first 3 seconds.</p></td>
+          <td data-label="What you get"><ul class="price-features"><li>Hook-first pacing &amp; kinetic captions</li><li>Trend-aware sound design</li><li>Platform-native 9:16 formatting</li><li>48-hour turnaround</li></ul></td>
+          <td><a href="#contact" class="btn btn-primary price-cta">Start a project</a></td>
+        </tr>
+        <tr>
+          <td data-label="Format"><p class="price-tier">Long-Form</p><h3>YouTube Edits</h3></td>
+          <td data-label="Price"><p class="price"><span class="price-from">from</span> $12<span class="price-per">/min</span></p><p class="price-desc">Retention-edited videos built to hold attention to the end card.</p></td>
+          <td data-label="What you get"><ul class="price-features"><li>Retention pacing &amp; pattern interrupts</li><li>B-roll, motion graphics &amp; sound design</li><li>Chapters &amp; end-screen strategy</li><li>First draft in 48 hours</li></ul></td>
+          <td><a href="#contact" class="btn btn-ghost price-cta">Start a project</a></td>
+        </tr>
+        <tr>
+          <td data-label="Format"><p class="price-tier">Ongoing</p><h3>Content Partner</h3></td>
+          <td data-label="Price"><p class="price">Custom</p><p class="price-desc">A dedicated editor embedded in your content operation.</p></td>
+          <td data-label="What you get"><ul class="price-features"><li>Guaranteed weekly output slots</li><li>Priority turnaround</li><li>One feedback loop, zero chaos</li><li>Monthly content system</li></ul></td>
+          <td><a href="#contact" class="btn btn-ghost price-cta">Let's talk</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="services-note">Still deciding? <a href="#contact">Start with a paid trial edit</a>, judge the work, not the pitch.</p>
   </section>
 
-  <section id="about" class="about">
+  <section id="about" class="about reveal">
     <p class="sec-kicker"><span>03</span>About</p>
     <div class="about-grid">
       <div class="about-copy">
-        <h2 class="sec-title">The editor behind <span>the cuts.</span></h2>
-        <p>I started cutting game clips on a Galaxy S5 in 2018 and never stopped — from mobile edits on KineMaster and Alight Motion to After Effects on PC. I've cut real estate media for US teams, talking-head content for a training brand, and Pokémon card content for a growing YouTube channel.</p>
-        <p>Self-taught, fast, and obsessed with pacing that keeps viewers watching.</p>
-        <ul class="facts">
-          <li><span>Based in</span>Fès, Morocco · working worldwide</li>
-          <li><span>Experience</span>8+ years · 2,300+ videos delivered</li>
-          <li><span>Toolkit</span>After Effects · CapCut</li>
-        </ul>
+        <p class="about-pull">Self-taught, fast, and obsessed with pacing that keeps viewers watching.</p>
+        <h2 class="sec-title">The editor behind <em>the cuts.</em></h2>
+        <p>I started cutting game clips on a Galaxy S5 in 2018 and never stopped, from mobile edits on KineMaster and Alight Motion to After Effects on PC. I've cut real estate media for US teams, talking-head content for a training brand, and Pokémon card content for a growing YouTube channel.</p>
+        <dl class="facts">
+          <div><dt>Based in</dt><dd>Fès, Morocco, working worldwide</dd></div>
+          <div><dt>Experience</dt><dd>8+ years, 2,300+ videos delivered</dd></div>
+          <div><dt>Toolkit</dt><dd>After Effects, CapCut</dd></div>
+        </dl>
       </div>
-      <div class="about-visual">
+      <figure class="about-figure">
         <img src="https://raw.githubusercontent.com/DRISSxDXRK/portfolio/main/profile.jpg" alt="Driss Ouazzani Chahdi">
-      </div>
+        <figcaption>Driss Ouazzani Chahdi, video editor</figcaption>
+      </figure>
     </div>
   </section>
 
-  <section id="testimonials" class="testimonials" hidden>
+  <section id="testimonials" class="testimonials reveal" hidden>
     <p class="sec-kicker"><span>04</span>Kind Words</p>
-    <h2 class="sec-title">Clients, <span>in their words.</span></h2>
+    <h2 class="sec-title">Clients, <em>in their words.</em></h2>
     <div class="quotes" id="quotes"></div>
   </section>
 
-  <section id="contact" class="contact">
+  <section id="contact" class="contact reveal">
     <p class="sec-kicker"><span>05</span>Contact</p>
-    <h2 class="sec-title">Let's make something <span>worth watching.</span></h2>
-    <p class="contact-sub">Currently available for freelance projects — reels, YouTube edits, ad creatives.</p>
+    <h2 class="sec-title">Let's make something <em>worth watching.</em></h2>
+    <p class="contact-sub">Currently available for freelance projects, reels, YouTube edits, ad creatives.</p>
     <div class="contact-links">
       <a class="contact-row" href="https://wa.me/4917688649232" target="_blank" rel="noopener">
         <span class="contact-label">WhatsApp</span>
         <span class="contact-value">+49 176 88649232</span>
-        <span class="contact-arrow">→</span>
+        <span class="contact-arrow" aria-hidden="true">→</span>
       </a>
       <a class="contact-row" href="https://www.instagram.com/drissouazzani.21" target="_blank" rel="noopener">
         <span class="contact-label">Instagram</span>
         <span class="contact-value">@drissouazzani.21</span>
-        <span class="contact-arrow">→</span>
+        <span class="contact-arrow" aria-hidden="true">→</span>
       </a>
       <a class="contact-row" href="mailto:serrentazimuts121@gmail.com">
         <span class="contact-label">Email</span>
         <span class="contact-value">serrentazimuts121@gmail.com</span>
-        <span class="contact-arrow">→</span>
+        <span class="contact-arrow" aria-hidden="true">→</span>
       </a>
     </div>
   </section>
 </main>
 
 <footer>
-  <p>© 2026 Driss Ouazzani Chahdi — Video Editor</p>
+  <p>© 2026 Driss Ouazzani Chahdi, Video Editor</p>
   <p class="footer-note">No data is collected through this page. Prices shown are the full prices.</p>
 </footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="videos.js"></script>
 <script src="testimonials.js"></script>
 <script src="app.js"></script>

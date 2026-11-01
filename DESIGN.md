@@ -1,79 +1,118 @@
-# DESIGN.md — Portfolio v2 "Midnight Cutting Room"
+# DESIGN.md, Preview3: "The Cutting Ledger"
 
-Direction, picked before code: a dark cutting-room editorial page for a
-video editor. Flat color, one lavender accent, hairline rules, big
-grotesk type, bento tiles. Motion only where it guides the eye.
+Direction, picked before code: an editorial, asymmetric, serif-led dark
+page for a video editor. The macrostructure is a ledger, not a bento:
+a headline ledger up top, a work index as hairline rows, services as a
+price table, facts as definition rows. Flat color, one lavender accent,
+hairline rules, serif display type. Motion only where it guides the eye,
+and one shader accent that earns its place in the hero.
 
-## Macrostructure: Bento Grid
+## Dials (Craftwork, agency/portfolio/experimental brief)
 
-The whole page is a bento: the hero is a tile composition (title tile,
-portrait tile, three stat tiles), the work section is a varied-size
-tile grid with three featured tiles spanning two columns, services are
-hairline-separated columns, contact is a row list. No stacked cards.
+Variance 8, Motion 7, Density 3. Asymmetry: headline block against an
+offset portrait figure. Airy: 64px section padding, 48px grid gaps.
 
-## Tokens
+## Tokens (from preview2 DESIGN.md)
 
-| Role | Value | Notes |
-|---|---|---|
-| Background | #0E0B1D | Tinted near-black, never pure black |
-| Panel | #1A1430 | Stat tiles, tile backs |
-| Panel deep | #2A1E4D | Reserved for featured emphasis |
-| Hairline | rgba(139,124,199,.22) | All dividers and tile borders |
-| Text | #EDEAF7 | Headings, primary copy |
-| Pale | #C9C2E3 | Body copy on dark (about 11:1 contrast) |
-| Muted | #B3A9D4 | Secondary copy (about 8:1) |
-| Accent | #8B7CC7 | ONE accent: kickers, labels, CTAs, hover (about 5:1 on bg, passes AA) |
-| Accent deep | #5A3B8C | Featured markers only |
+Background #0E0B1D, panel #1A1430, panel deep #2A1E4D, hairline
+rgba(139, 124, 199, 0.22), text #EDEAF7, pale #C9C2E3, muted #B3A9D4,
+accent #8B7CC7, accent deep #5A3B8C. One accent, flat, no glow, no
+CSS gradients. Radius 8px everywhere. Spacing only 4/8/16/24/32/48/64;
+the only off-scale numbers are functional, not visual rhythm: 90px
+scroll-margin anchor offset (carried from preview2), 44px touch
+targets, media dimensions, and the 1120px wrap.
 
 ## Typography
 
-- Display: Space Grotesk 700, tight tracking (-.02 to -.03em), line-height 1.02-1.05.
-- Body: Inter 400/500/600, line-height 1.65.
-- Scale: hero clamp(2.9rem, 6.5vw, 5.2rem); section titles clamp(2rem, 4.5vw, 3.4rem).
-- Labels: monospace, uppercase, wide letter-spacing, never italic in headings.
-- Measure: body copy capped around 60ch.
-- Loading: preconnect + display=swap, no layout shift.
+Display: Fraunces 600/700 with italic accent words, tight tracking,
+line-height 1.02 to 1.05. Body: Inter 400/500/600, line-height 1.65.
+Labels: Inter 12px uppercase, wide letter-spacing, muted. Two font
+families only. Body copy capped at 64ch.
 
-## Motion (purposeful only)
+## Motion (Premium personality)
 
-- Hero entrance: staggered rise, power3.out, no bounce, no elastic easing.
-- Scroll reveals: sections rise 28px on entry (GSAP ScrollTrigger).
-- Work tiles: stagger on filter change.
-- Hover: image scale 1.04, play button fade, arrow nudge. Nothing moves layout.
-- Ticker: constant-speed tape + count-up numbers.
-- Reduced motion: all JS animation skipped, content fully visible.
-  Initial hidden states are set from JS only, never CSS, so a failed
-  CDN or disabled JS still shows the full page.
-- If the GSAP CDN fails, the page works with zero animation.
+One signature easing for every animation: cubic-bezier(0.23, 1, 0.32, 1).
+DOM motion uses CSS transitions, not GSAP, per cheapest-tool-first:
+CSS transition beats a CDN dependency, and it keeps the exact easing
+everywhere instead of an approximation. UI under 300ms, reveals 600ms
+with a 10px rise from scale 0.98 (never scale 0), press feedback
+scale 0.97 over 150ms, filter stagger 40ms steps capped at 480ms,
+ticker at constant linear speed, count-up 1600ms. Transform and
+opacity only. Hover motion is gated behind hover/pointer media.
+Reduced motion ships with the animation: opacity-only fades, no
+position changes, no ticker scroll, no shader, final count-up values.
 
-## Anti-slop checks applied (Impeccable detector / Hallmark gates)
+## The one WebGL accent
 
-- No radial gradient blooms, no purple gradient hero.
-- No pure black or untinted gray.
-- No Inter-as-display; Space Grotesk carries headings.
-- No cards nested in cards; tiles are flat, captions sit on the background.
-- No italic emphasis in headings or CTAs.
-- No over-centered text blocks; everything left-aligned except the footer.
-- No bounce or elastic easing.
-- Clickable text never wraps mid-word in buttons.
-- Focus-visible outlines in accent on every interactive element.
-- Honest copy only: every stat and quote already appears on the live site.
+A single WebGL2 canvas behind the hero headline renders a slow
+accent-tinted value-noise field (4 FBM octaves, max alpha 0.16, DPR
+capped at 1.5). It stays hidden unless context creation, compile, and
+link all succeed, pauses offscreen and when the tab hides, and never
+starts under reduced motion. The static fallback is the flat hero
+background: the page is complete without it.
 
 ## Structure
 
-- Nav: fixed, blur, wordmark + links + Hire me.
-- Hero bento: title (7 cols), portrait (5 cols), 3 stat tiles (4 cols each).
-- Ticker: career stats tape.
-- Work: filters + 25-tile bento (3 featured span 2 cols).
-- Services: 3 hairline columns, Short-Form featured.
-- About: editorial split, facts as hairline rows.
-- Kind Words: Malek quote, accent bar (hidden while empty).
-- Contact: 3 hairline rows with arrows.
-- Footer: single line.
+Nav: fixed, blur, wordmark plus links plus Hire me, hamburger under
+720px with dropdown panel, Escape and resize handling, scroll state.
+Hero: headline block plus offset portrait figure, then a ledger strip
+(availability, based, toolkit) as text, not metrics. Ticker: career
+stats tape with count-up. Work: 25-row ledger, index number, thumb
+button, title, client, format tag; tapping a thumb opens an inline
+player drawer (video or YouTube iframe), one drawer at a time, real
+buttons with aria-labels and aria-expanded. Services: price table, not
+cards. About: pull statement plus paragraphs plus fact rows plus
+portrait figure. Kind Words: Malek quote, shown by testimonials.js.
+Contact: three large link rows. Footer: single line plus the no-data
+collected note.
 
-## Media
+## Copy rules applied
 
-Videos, thumbnails and the portrait are hotlinked from the original
-`portfolio` repo (raw.githubusercontent.com) so this preview stays
-lightweight. When the redesign is approved for the live site, the media
-moves with it and the hotlinks become local paths.
+Same copy, prices, videos, and contacts as the original. Titles use a
+hyphen separator and facts use commas: this build has no em dashes and
+no middle-dot separators anywhere, per the skill. No invented work,
+metrics, testimonials, or prices.
+
+## Refactoring UI 8-point diagnostic (self-audit from code)
+
+1. Blur-test hierarchy: pass, headline dominates by size, then
+   section titles, then body.
+2. Grayscale survival: pass, hierarchy is size and weight driven,
+   not color driven.
+3. White space: pass, 64px sections, 48px gaps, density dial 3.
+4. De-emphasised labels: pass, 12px uppercase muted labels.
+5. Spacing scale: pass, all visual margin, padding, and gap values
+   are on 4/8/16/24/32/48/64.
+6. Text width: pass, body copy capped at 64ch.
+7. Contrast: pass, text about 15:1, pale about 11:1, muted about 8:1,
+   accent about 5:1 used only for large text, UI accents, and bold
+   button text on accent.
+8. Shadows matched to elevation: pass by absence, flat design with
+   zero shadows and zero false elevation.
+
+Score: 8 of 8, which is 10 of 10. Note: this is a code-level audit,
+not a rendered screenshot audit, and phone-width rendering is
+unverified (see below).
+
+## Verification done locally
+
+HTML parses with no errors and no unclosed tags. CSS braces and
+parens balance, no unclosed comments. All three JS files pass
+node --check. Every element ID and class referenced by JS exists in
+the HTML or CSS, except drawer-player, which is a JS hook only and
+needs no styles. All 49 referenced media paths (22 videos, 25 thumbs,
+profile, og-image) exist in the original clone, and no original media
+file is unreferenced. No em dashes, middle dots, placeholders, or
+invented content. No transition-all, 100vh, z-index 999, bare
+outline-none, or background-clip text in CSS.
+
+## NOT verified (honest gaps)
+
+Phone-width rendering at 390px cannot be verified from here: no live
+browser is available to this build, so the stacking, the ledger row
+compaction, the price table block layout, and the absence of
+horizontal overflow at 390 are designed but unrendered. The WebGL
+shader compiles on paper (standard WebGL2, guarded with try/catch and
+a static fallback) but was never executed in a browser. The GSAP
+ScrollTrigger skill was read but GSAP was deliberately not used; see
+the motion section for why.
